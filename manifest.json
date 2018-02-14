@@ -1,0 +1,35 @@
+{
+  "name": "DOMLogger",
+  "version": "1.0",
+  "description": "Adds a browser action showing which tabs share the current tab's process.",
+  "permissions": [
+    "tabs", "background", "*://*/*"
+  ],
+
+  "externally_connectable": {
+    "ids": ["*"]
+  },
+  "permissions": [ "http://*/*", "https://*/*"],
+
+  "browser_action": {
+      "default_title": "DOMLogger",
+      "default_icon": "icon.png",
+      "default_popup": "popup.html"
+  },
+
+  "background": {
+    "page": "background.html"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["script.js"],
+      "run_at": "document_start",
+      "all_frames": true,
+      "matchAboutBlank": true
+    }
+  ],
+
+  "manifest_version": 2
+}
